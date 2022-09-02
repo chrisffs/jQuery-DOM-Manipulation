@@ -37,12 +37,11 @@ $().ready(function(){
     $('#newItem').before('<h4>Enter new Item to the List</h4>')
     $('#newItem').keyup(function(e){
         let code = e.which
-
+        e.preventDefault()
         if(code == 13) {
-            $('ul').append('<li>'+ e.target.value +'</li>')
+            $('#items').append('<li>'+ e.target.value +'</li>')
             $('#newItem').val('')
         }
-        
     })
 
     var myArr = ['Jan', 'Alyssa','Prench','Kym']
@@ -54,6 +53,39 @@ $().ready(function(){
     var liArr = $('#items li').toArray()
     $.each(liArr, function(i, val){
         console.log(val.innerHTML);
+    })
+
+
+    // For Effects and Animations
+    $('#btnFadeOut').click(function(){
+        $('#box').fadeOut(1000, function(){
+            $('#btnFadeOut').text('It\'s Gone')
+        })
+    })
+    $('#btnFadeIn').click(function(){
+        $('#box').fadeIn(1000, function(){
+            $('#btnFadeOut').text('Fade-Out')
+        })
+    })
+    $('#btnFadeTog').click(function(){
+        $('#box').fadeToggle(1000)
+    })
+
+    $('#btnSlideDown').click(function(){
+        $('#box').slideDown(1000, function(){
+            $('#btnFadeOut').text('It\'s Gone')
+        })
+    })
+    $('#btnSlideUp').click(function(){
+        $('#box').slideUp(1000, function(){
+            $('#btnFadeOut').text('Fade-Out')
+        })
+    })
+    $('#btnSlideTog').click(function(){
+        $('#box').slideToggle(1000)
+    })
+    $('#btnStop').click(function(){
+        $('#box').stop()
     })
 })
 
